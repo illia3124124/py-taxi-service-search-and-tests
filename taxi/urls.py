@@ -63,8 +63,8 @@ urlpatterns = [
     ),
     path(
         "cars/<int:pk>/delete/",
-         CarDeleteView.as_view(),
-         name="car-delete"
+        CarDeleteView.as_view(),
+        name="car-delete"
     ),
     path(
         "cars/<int:pk>/toggle-assign/",

@@ -81,7 +81,10 @@ class DriverViewsTests(TestCase):
     def test_drivers_list_in_list_view(self):
         res = self.client.get(reverse("taxi:driver-list"))
         per_page = res.context["paginator"].per_page
-        self.assertEqual(self.drivers[:per_page], list(res.context["driver_list"]))
+        self.assertEqual(
+            self.drivers[:per_page],
+            list(res.context["driver_list"])
+        )
 
     def test_driver_in_detail_view(self):
         res = self.client.get(reverse("taxi:driver-detail", kwargs={"pk": 1}))
