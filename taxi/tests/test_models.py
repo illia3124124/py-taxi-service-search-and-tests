@@ -29,7 +29,12 @@ class ModelsTests(TestCase):
         self.assertEqual(Manufacturer._meta.get_field("name").max_length, 255)
 
     def test_manufacturer_country_field_max_length(self):
-        self.assertEqual(Manufacturer._meta.get_field("country").max_length, 255)
+        self.assertEqual(
+            Manufacturer
+            ._meta
+            .get_field("country")
+            .max_length,
+            255)
 
     def test_manufacturer_str_method(self):
         self.assertEqual(
@@ -44,7 +49,11 @@ class ModelsTests(TestCase):
         self.assertEqual(str(self.car), self.car.model)
 
     def test_driver_license_number_field_max_length(self):
-        self.assertEqual(self.driver._meta.get_field("license_number").max_length, 255)
+        self.assertEqual(
+            self.driver
+            ._meta.get_field("license_number")
+            .max_length,
+            255)
 
     def test_driver_str_method(self):
         self.assertEqual(

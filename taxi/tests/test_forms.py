@@ -1,11 +1,16 @@
-from django.core.exceptions import ValidationError
 from django.test import TestCase
 from django import forms
 
 from django.contrib.auth import get_user_model
 
-from taxi.forms import CarForm, DriverCreationForm, DriverLicenseUpdateForm, DriverSearchForm, CarSearchForm, \
+from taxi.forms import (
+    CarForm,
+    DriverCreationForm,
+    DriverLicenseUpdateForm,
+    DriverSearchForm,
+    CarSearchForm,
     ManufacturerSearchForm
+)
 from taxi.models import Manufacturer
 
 DRIVER = get_user_model()
@@ -52,7 +57,10 @@ class CarFormTests(TestCase):
 
     def test_form_contains_drivers_field(self):
         form = CarForm()
-        self.assertIsInstance(form.fields["drivers"].widget, forms.CheckboxSelectMultiple)
+        self.assertIsInstance(
+            form.fields["drivers"].widget,
+            forms.CheckboxSelectMultiple
+        )
 
 
 class DriverCreationFormTests(TestCase):
@@ -86,10 +94,7 @@ class DriverLicenseUpdateFormTests(TestCase):
 
     def test_license_number_invalid(self):
         for license_number in INVALID_LICENSE_NUMBERS:
-            form = DriverCreationForm({
-                "username": USERNAME,
-                "password1": PASSWORD,
-                "password2": PASSWORD,
+            form = DriverLicenseUpdateForm({
                 "license_number": license_number,
             })
             self.assertFalse(form.is_valid())
